@@ -6,7 +6,7 @@ export default function TodoForm (props) {
 
   const handleChange = (e) => setInput(e.target.value);
 
-
+  console.log(input, 'input here')
   return (
     <form className='todo-form' onSubmit={() => handleSubmit(input)}>
       <input
@@ -16,7 +16,7 @@ export default function TodoForm (props) {
         className={'todo-input'}
         onChange={handleChange}
       />
-      <button className={'todo-button'}>Add</button>
+      <button type={'submit'} className={'todo-button'}>Add</button>
     </form>
   )
 }

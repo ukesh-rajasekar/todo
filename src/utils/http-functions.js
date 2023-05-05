@@ -59,10 +59,11 @@ const deleteTodo = async (id) => {
 }
 
 const updateTodo = async (id, update) => {
+    console.log(`updating id: ${id} - value: ${JSON.stringify(update)}`)
     try {
         const response = await fetch(`http://localhost:3006/api/v1/todo/${id}`, {
-            method: 'UPDATE',
-            body: { update },
+            method: 'PUT',
+            body: JSON.stringify(update),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -70,11 +71,11 @@ const updateTodo = async (id, update) => {
         const result = await response.json();
         console.log(result, 'todos-updated');
         if (result.status === 'success') {
-            return true;
+            return result.data.todo;
         }
     }
     catch (e) {
-        console.log(e);
+        console.log(e, 'error');
     }
 }
 

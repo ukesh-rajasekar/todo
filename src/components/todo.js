@@ -45,7 +45,7 @@ export default function Todo () {
   console.log(todos, 'todos here')
   return (
     <div><TodoForm setTodos={setTodos} todos={todos} handleSubmit={addTodo} />
-      {todos.length > 0 && <TodoList setTodos={setTodos} todos={todos} editTodo={editTodo} />}</div>
+      {todos?.length > 0 && <TodoList setTodos={setTodos} todos={todos} editTodo={editTodo} />}</div>
   )
 }
 ;
