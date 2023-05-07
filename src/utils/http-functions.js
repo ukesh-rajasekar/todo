@@ -58,6 +58,25 @@ const deleteTodo = async (id) => {
     }
 }
 
+const deleteAllTodo = async () => {
+    try {
+        const response = await fetch(`http://localhost:3006/api/v1/todo/todos/removeAll`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const result = await response.json();
+        console.log(result, 'todos-deleted');
+        if (result.status === 'success') {
+            return true;
+        }
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 const updateTodo = async (id, update) => {
     console.log(`updating id: ${id} - value: ${JSON.stringify(update)}`)
     try {
@@ -80,4 +99,4 @@ const updateTodo = async (id, update) => {
 }
 
 
-export { getTodos, deleteTodo, updateTodo, createTodo };
+export { getTodos, deleteTodo, updateTodo, createTodo, deleteAllTodo };

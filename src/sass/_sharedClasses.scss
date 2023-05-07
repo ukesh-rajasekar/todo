@@ -4,7 +4,7 @@ $add-button-color: #1B4D3E;
 $update-button-color: #002D62;
 $clear-button-color: #A52A2A;
 
-.button {
+button {
     width: 15%;
     min-width: 48px;
     min-height: 48px;
@@ -14,12 +14,12 @@ $clear-button-color: #A52A2A;
     outline: none;
 }
 
-.button-hover{
+button-hover{
     cursor: pointer;
 } 
 
-.button:hover,
-.button:focus {
+button:hover,
+button:focus {
     filter: brightness(120%);
     box-shadow: 4px 2px 5px #000;
 }
