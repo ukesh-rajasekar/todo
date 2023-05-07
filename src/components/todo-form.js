@@ -14,9 +14,10 @@ export default function TodoForm (props) {
         placeholder='Add stuff here'
         value={input}
         className={'todo-input'}
+        autoFocus={true}
         onChange={handleChange}
       />
-      <button type={'submit'} className={'todo-button'}>Add</button>
+      <button type={'submit'} className={'button'}>Add</button>
     </form>
   )
 }

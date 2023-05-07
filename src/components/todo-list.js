@@ -31,12 +31,14 @@ export default function TodoList (props) {
   }
 
 
-  return todos.map((todo, index) => (
+  return (<><div className='listTitle'><h1>To-do List </h1>   <button title="clear the list" className={'button'}>Clear</button></div>{todos.map((todo, index) => (
     <>
       {edit?._id === todo._id ? (<div key={todo._id}><TodoForm setTodos={setTodos} todos={todos} handleSubmit={submitUpdate} />
       </div>) : (
-        <div key={todo._id}>
-          {todo.name}
+        <div key={todo._id} className='item'>
+          <input
+            type="checkbox" />
+          <label>{todo.name}</label>
           <div className='icons'>
             <RiCloseCircleLine onClick={() => removeTodo(todo._id, index)} className={'delete-icon'} />
             <TiEdit onClick={() => setEdit({ _id: todo._id, text: todo.name })
@@ -44,5 +46,5 @@ export default function TodoList (props) {
           </div>
         </div>)}
     </>
-  ))
+  ))}</>)
 }
