@@ -18,6 +18,44 @@
         }
        }
     }
+
+    
+    form{
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem;
+
+        label {
+            position: absolute;
+            left: -10000px;
+        }
+    
+        input[type="text"] {
+            border: 2px solid $textbox-bordercolor;
+            border-radius: 10px;
+            width: 60%;
+            font-size: 1.25rem;
+            padding: 0.75rem;
+            outline: none;
+        }
+        input[type="text"]:focus,
+        input[type="text"]:hover{
+            box-shadow: 4px 2px 5px #000;
+            border-color: #007FFF;
+        }   
+
+        button{
+            font-size: 1rem;
+            background-color: $clear-button-color;
+            padding: 0.1rem;
+            @include mp(768px){
+                font-size: 1.25rem;
+            }
+        }
+        #update-button{
+            background-color: $update-button-color;
+        }
+    }
       
     .item{
         display: flex;
@@ -35,10 +73,10 @@
 
     input[type="checkbox"]{
         text-align: center;
-        width:2.5rem;
-        min-width: 48px;
-        height:2.5rem;
-        min-height: 48px;
+        width:1.5rem;
+        min-width: 34px;
+        height:1.5rem;
+        min-height: 34px;
         margin-right: 1rem;
         cursor: pointer;
     }

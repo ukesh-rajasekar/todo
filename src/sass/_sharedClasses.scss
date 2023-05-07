@@ -1,6 +1,7 @@
 $textbox-bordercolor : #000;
 $button-textcolor: #fff;
 $add-button-color: #1B4D3E;
+$update-button-color: #002D62;
 $clear-button-color: #A52A2A;
 
 .button {
@@ -15,7 +16,7 @@ $clear-button-color: #A52A2A;
 
 .button-hover{
     cursor: pointer;
-}
+} 
 
 .button:hover,
 .button:focus {
