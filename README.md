@@ -18,6 +18,7 @@ This project as an experiment to learn how a modern app (with features like auth
 
 -  [x] ~Build basic todo app~
 -  [x] ~Build backend CRUD apis~
+-  [x] Testing the Accessibility features
 -  [x] Add authentication
 -  [x] Subscriptions using Stripe
 -  [x] Responsive styles

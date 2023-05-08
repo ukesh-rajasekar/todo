@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 import { deleteAllTodo, deleteTodo, updateTodo } from '../utils/http-functions';
@@ -17,8 +17,8 @@ export default function TodoList (props) {
   const { todos, setTodos, editTodo } = props;
 
   const submitUpdate = async (value) => {
-    const result = await updateTodo(edit._id, { update: { name: value } });;
-    editTodo(edit._id, result);
+    const updatedTodoName = await updateTodo(edit._id, { update: { name: value } });
+    editTodo(edit._id, updatedTodoName);
     setEdit({
       _id: '',
       text: ''
@@ -42,6 +42,13 @@ export default function TodoList (props) {
   };
 
 
+  const setTodoCompleted = async (id, isCompleted) => {
+    const updatedTodoStatus = await updateTodo(id, { update: { isCompleted: isCompleted } });
+    editTodo(id, updatedTodoStatus);
+    console.log(updatedTodoStatus);
+  }
+
+
 
   return (<><div className='listTitle'><h1>To-do List </h1>   <button title="clear the list" className={'button'} onClick={() => { setRemoveAll(true) }}>Clear</button></div>{todos.map((todo, index) => (
     <div key={todo._id}>
@@ -49,8 +56,16 @@ export default function TodoList (props) {
       </div>) : (
         <div className='item'>
           <input
-            type="checkbox" />
-          <label>{todo.name}</label>
+            type="checkbox"
+            id={`custom-checkbox-${todo.name}`}
+            name={todo.name}
+            checked={todo.isCompleted}
+            onChange={() => setTodoCompleted(todo._id, !todo.isCompleted)}
+          />
+
+
+          <label style={{ textDecoration: todo.isCompleted ? 'line-through' : 'none' }}>{todo.name}</label>
+
           <div className='icons'>
             <RiCloseCircleLine onClick={() => removeTodo(todo._id, index)} className={'delete-icon'} />
             <TiEdit onClick={() => setEdit({ _id: todo._id, text: todo.name })
