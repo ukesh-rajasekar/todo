@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
+import Modal from '../UI/modal';
 import { deleteAllTodo, deleteTodo, updateTodo } from '../utils/http-functions';
 import TodoUpdateForm from './todo-update-form';
-import Modal from '../UI/modal';
+
 
 export default function TodoList (props) {
 
@@ -19,6 +21,7 @@ export default function TodoList (props) {
   const submitUpdate = async (value) => {
     const updatedTodoName = await updateTodo(edit._id, { update: { name: value } });
     editTodo(edit._id, updatedTodoName);
+    toast.success('item updated');
     setEdit({
       _id: '',
       text: ''
@@ -31,6 +34,7 @@ export default function TodoList (props) {
     let newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
+    toast.success('item removed!')
   }
 
   const removeAllItems = async () => {
@@ -38,6 +42,7 @@ export default function TodoList (props) {
     if (result) {
       setTodos([]);
       setRemoveAll(false);
+      toast.success('cleared your list');
     }
   };
 
