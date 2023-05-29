@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 
 export default function TodoUpdateForm (props) {
     const { handleSubmit, cancelUpdate } = props;
-    const [update, setupdate] = useState('');
+    const updateEl = useRef(null);
 
-    const handleChange = (e) => setupdate(e.target.value);
 
-    console.log(update, 'input here')
+
     return (
-        <form className='todo-form' onSubmit={() => handleSubmit(update)}>
+        <form className='todo-form' onSubmit={() => handleSubmit(updateEl?.current?.value)}>
             <input
                 type='text'
+                ref={updateEl}
                 placeholder='update'
-                value={update}
                 className={'update-input'}
                 autoFocus={true}
-                onChange={handleChange}
             />
             <button className={'button'} id={'cancel-button'} onClick={cancelUpdate}>cancel</button>
             <button type={'submit'} className={'button'} id={'update-button'}>update</button>
